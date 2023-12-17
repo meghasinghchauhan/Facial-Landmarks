@@ -8,7 +8,7 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(predictor_path)
 
 # Load the input image
-image_path = 'target.jpg'  # Path to the input image file
+image_path = 'sample.jpg'  # Path to the input image file
 image = cv2.imread(image_path)
 
 # Convert the image to grayscale
@@ -29,11 +29,11 @@ for face in faces:
         landmarks_array[i] = (landmarks.part(i).x, landmarks.part(i).y)
 
     # Save landmarks to a text file
-    np.savetxt('target.txt', landmarks_array, fmt='%d')
+    np.savetxt('sample.txt', landmarks_array, fmt='%d')
 
     # Draw facial landmarks on the image
     for (x, y) in landmarks_array:
         cv2.circle(image, (x, y), 2, (0, 0, 255), -1)
 
 # Save the output image
-cv2.imwrite('target_landmarks.png', image)
+cv2.imwrite('sample_landmarks.png', image)
